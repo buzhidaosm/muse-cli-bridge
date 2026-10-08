@@ -1,0 +1,11 @@
+{
+  "recorded_date": "2026-10-08",
+  "kind": "sanitized-validation-summary",
+  "note": "Account identifiers, real task IDs and filesystem paths are deliberately omitted. This is a summary of observed validation, not a raw private conversation or fabricated transcript.",
+  "cases": [
+    {"agent": "codex", "muse_task_observed": true, "local_execution_status": "completed", "expected_answer": "MUSE_CODEX_ROUNDTRIP_OK", "answer_verified": true, "result_present_in_muse_history": true},
+    {"agent": "claude", "muse_task_observed": true, "local_execution_status": "completed", "expected_answer": "MUSE_CLAUDE_ROUNDTRIP_OK", "answer_verified": true, "result_present_in_muse_history": true}
+  ],
+  "disposable_project_edits": {"codex_file_content_verified": true, "claude_file_content_verified": true},
+  "limits": "These checks do not prove universal account/API compatibility or that arbitrary future tasks will succeed. New permission-policy checks are covered separately by automated tests."
+}

@@ -1,0 +1,27 @@
+name: Compatibility or bug report
+description: Report a reproducible issue without account secrets.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include cookies, authorization headers, HAR files, credentials or private chats."
+  - type: input
+    id: version
+    attributes:
+      label: Muse Bridge version
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Redacted steps and observed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+  - type: textarea
+    id: environment
+    attributes:
+      label: macOS, Python, Codex/Claude versions and safe error codes

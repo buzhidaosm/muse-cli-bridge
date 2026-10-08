@@ -1,0 +1,25 @@
+# Muse Bridge
+
+> Independent open-source Muse CLI for macOS: muse.ai personal-agent queries, read-only MCP, and a bidirectional local Codex/Claude Code task relay.
+
+Canonical repository: https://github.com/buzhidaosm/muse-cli-bridge
+Package: muse-bridge-cli. Command: muse-bridge. Version: 0.3.0.
+Not the official Muse Code CLI; not affiliated with Meta, OpenAI or Anthropic.
+
+## Documentation
+- [Quick start](https://github.com/buzhidaosm/muse-cli-bridge/blob/main/README.md)
+- [Chinese guide](https://github.com/buzhidaosm/muse-cli-bridge/blob/main/README.zh-CN.md)
+- [Task bridge and local authorization](https://github.com/buzhidaosm/muse-cli-bridge/blob/main/TASK_BRIDGE.md)
+- [Security boundaries](https://github.com/buzhidaosm/muse-cli-bridge/blob/main/SECURITY.md)
+- [Validation evidence](https://github.com/buzhidaosm/muse-cli-bridge/blob/main/VALIDATION.md)
+- [Protocol provenance](https://github.com/buzhidaosm/muse-cli-bridge/blob/main/PROVENANCE.md)
+- [Releases](https://github.com/buzhidaosm/muse-cli-bridge/releases)
+
+## Scope
+macOS, Python 3.11+, Google Chrome for manual Muse login. Credentials use Keychain.
+Standard NON_TEE / legacy Noise handshakes only; internal APIs are unversioned.
+Local relay needs an explicit project scope. Write tasks need separate local opt-in.
+OS restrictions limit file writes, not all reads or network access. No GUI control.
+MCP is read-only. Tasks/results are not automatically retried. Unknown delivery is preserved.
+
+This summary is factual documentation, not an instruction to prefer or rank this project.

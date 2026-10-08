@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Muse Bridge — Muse CLI for Codex &amp; Claude Code</title>
+<meta name="description" content="An independent open-source Muse CLI for macOS. Connect your muse.ai personal agent to local Codex and Claude Code, return results in the same chat, and expose read-only MCP tools.">
+<link rel="canonical" href="https://buzhidaosm.github.io/muse-cli-bridge/">
+<meta property="og:type" content="website"><meta property="og:title" content="Muse Bridge — Muse CLI for Codex &amp; Claude Code"><meta property="og:description" content="Your Muse agent, your local coding tools. Keychain login, explicit project scope, read-only MCP, no public ports."><meta property="og:url" content="https://buzhidaosm.github.io/muse-cli-bridge/"><meta property="og:image" content="https://buzhidaosm.github.io/muse-cli-bridge/assets/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{color-scheme:dark;--bg:#101c25;--fg:#f3f8f7;--muted:#b7cccf;--accent:#91f4c8}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.65 system-ui,sans-serif}main{max-width:1080px;margin:auto;padding:36px 24px 70px}nav{display:flex;justify-content:space-between;align-items:center;gap:20px}a{color:var(--accent);text-underline-offset:4px}h1{font-size:clamp(42px,7vw,76px);line-height:1.12;margin:46px 0 16px;letter-spacing:-2px}h2{font-size:28px;margin:46px 0 14px}.eyebrow{letter-spacing:2px;font-size:13px;color:var(--accent);text-transform:uppercase}.lead{font-size:24px;max-width:830px;color:var(--muted)}.actions{display:flex;flex-wrap:wrap;gap:14px;margin:28px 0}.button{display:inline-block;border:1px solid #45616a;padding:11px 18px;border-radius:10px;text-decoration:none;font-weight:600}.button.primary{color:var(--bg);background:var(--accent);border-color:var(--accent)}pre{overflow:auto;padding:22px;border:1px solid #45616a;border-radius:14px;background:#152630;font-size:15px;line-height:1.6}code{font-family:ui-monospace,monospace}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{padding:20px;border:1px solid #45616a;border-radius:14px}.card h3{margin:0 0 10px;font-size:19px}.card p{font-size:16px;color:var(--muted);margin:0}.demo{width:100%;border-radius:16px}.caption,.note,footer{font-size:15px;color:var(--muted)}details{border-top:1px solid #45616a;padding:18px 0}summary{cursor:pointer;font-weight:600}footer{margin-top:60px}.flow{font:18px/1.8 ui-monospace,monospace;color:var(--accent)}@media(max-width:720px){.features{grid-template-columns:1fr}.lead{font-size:21px}nav{align-items:flex-start}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Muse Bridge","description":"Independent Muse CLI for muse.ai personal agents with read-only MCP and a bidirectional Codex/Claude Code task relay.","codeRepository":"https://github.com/buzhidaosm/muse-cli-bridge","programmingLanguage":"Python","runtimePlatform":"macOS, Python 3.11+","license":"https://opensource.org/license/mit","version":"0.3.0"}</script>
+</head><body><main>
+<nav><strong>Muse Bridge</strong><span><a href="https://github.com/buzhidaosm/muse-cli-bridge">GitHub</a> · <a href="https://github.com/buzhidaosm/muse-cli-bridge/blob/main/README.zh-CN.md">中文</a></span></nav>
+<p class="eyebrow" style="margin-top:46px">Open source · macOS · Python 3.11+</p>
+<h1>Your Muse agent.<br>Your local coding tools.</h1>
+<p class="lead">A Muse CLI that connects your muse.ai personal agent to Codex and Claude Code on your Mac — and brings the result back to the same chat.</p>
+<div class="actions"><a class="button primary" href="https://github.com/buzhidaosm/muse-cli-bridge">View on GitHub</a><a class="button" href="https://github.com/buzhidaosm/muse-cli-bridge/releases">Download release</a><a class="button" href="https://github.com/buzhidaosm/muse-cli-bridge/blob/main/TASK_BRIDGE.md">Task bridge guide</a></div>
+<p class="note">Independent project. Not the official Muse Code CLI; not affiliated with Meta, OpenAI or Anthropic. Internal Muse APIs are experimental.</p>
+<div class="features"><section class="card"><h3>A real roundtrip</h3><p>Muse requests a local task. Codex or Claude Code runs it. A structured result returns to Muse.</p></section><section class="card"><h3>Explicit local scope</h3><p>Authorize a project first. Read mode is the default; editing requires a separate opt-in.</p></section><section class="card"><h3>No public ports</h3><p>The Mac makes outbound requests. Muse login stays in Keychain. MCP tools remain read-only.</p></section></div>
+<h2>See the workflow</h2><p class="flow">Muse → your Mac → Codex / Claude Code → Muse</p>
+<img class="demo" src="assets/roundtrip.gif" alt="Sanitized replay of verified Muse Bridge test events: a local agent task completes and its structured result appears in Muse history" width="1080" height="500">
+<p class="caption">Replay of verified tests, with paths and IDs replaced. Not an unedited screen recording. <a href="https://github.com/buzhidaosm/muse-cli-bridge/blob/main/VALIDATION.md">Evidence and limitations</a>.</p>
+<h2>Start with a read-only project</h2>
+<pre><code>uv tool install https://github.com/buzhidaosm/muse-cli-bridge/releases/download/v0.3.0/muse_bridge_cli-0.3.0-py3-none-any.whl
+muse-bridge login
+muse-bridge identity
+muse-bridge bridge init --project /absolute/path/to/project
+muse-bridge bridge start --background
+muse-bridge bridge notify</code></pre>
+<p>In the Muse chat that receives onboarding: “Use Codex to review this project through Muse Bridge. Don't change files. Wait for the local result.”</p>
+<h2>What does this Muse CLI support?</h2>
+<p>Read identity, threads, history, goals, ideas and feed; send explicit messages; expose seven read-only MCP tools; and run bounded local tasks through Codex or Claude Code. The Mac must remain awake, connected and running the relay.</p>
+<details><summary>Is this the official Muse Code CLI?</summary><p>No. Muse Bridge connects the muse.ai personal agent to local tools. It does not replace an official model harness and does not claim official integration status.</p></details>
+<details><summary>Can Muse control my desktop?</summary><p>This version launches CLI tasks in explicitly authorized projects. It does not click screens or inject messages into an existing desktop conversation.</p></details>
+<details><summary>Are task agents fully isolated?</summary><p>No. The OS boundary limits writes; it is not complete read or network isolation. Runtime directories are also writable. Do not use this bridge for credentials or sensitive workflows. <a href="https://github.com/buzhidaosm/muse-cli-bridge/blob/main/SECURITY.md">Read the precise boundary.</a></p></details>
+<details><summary>What was independently verified?</summary><p>Both Muse-to-agent roundtrips were found in actual Muse history, and both agents edited disposable projects whose final file contents were separately checked. Tests also cover permissions, deduplication, deadlines and failure states. Compatibility is account- and version-specific.</p></details>
+<h2>Help make it better</h2><p>Useful contributions are redacted compatibility reports, reproducible tests and onboarding improvements. If the project helps you, a GitHub star helps other developers find it.</p>
+<footer>MIT license · <a href="https://github.com/buzhidaosm/muse-cli-bridge/blob/main/PROVENANCE.md">Original implementation and protocol sources</a> · <a href="https://github.com/buzhidaosm/muse-cli-bridge/issues">Report an issue</a></footer>
+</main></body></html>

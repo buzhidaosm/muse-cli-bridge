@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security boundaries
+    url: https://github.com/buzhidaosm/muse-cli-bridge/blob/main/SECURITY.md
+    about: Read the boundary and reporting guidance before sharing sensitive details.
