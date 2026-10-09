@@ -1,0 +1,33 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+        python: ['3.11', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python }}
+          enable-cache: true
+      - run: uv sync --locked --no-editable --group dev
+      - run: uv run --no-editable ruff check src tests
+      - run: uv run --no-editable pytest -q
+      - run: uv build
+      - name: Installed wheel smoke test
+        shell: bash
+        run: |
+          uv venv wheel-env
+          uv pip install --python wheel-env/bin/python dist/*.whl
+          wheel-env/bin/muse-bridge --version
+          wheel-env/bin/muse-bridge --help
